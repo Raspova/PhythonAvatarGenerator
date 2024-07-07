@@ -1,57 +1,81 @@
-# py-avataaars - Python component for Avataaars
+ # AvatarMaker
 
-[![build-status-image]][travis]
-[![pypi-version]][pypi]
+AvatarMaker is a Python library for generating customizable avatars. It's based on the py-avataaars project and provides an easy way to create both random and specific avatars.
 
-Python port of https://github.com/fangpenlin/avataaars
+## Installation
 
-> The core React component for [Avataaars Generator](https://getavataaars.com/) developed by [Fang-Pen Lin](https://twitter.com/fangpenlin), based on the Sketch library [Avataaars](https://avataaars.com/) designed by [Pablo Stanley](https://twitter.com/pablostanley). 
+To install AvatarMaker, you can use pip:
 
-## Features
-* SVG based
-* Light weight
-* Easy to use
 
-## Install
-```shell script
-pip install py-avataaars
+```shell
+pip3 -r requirements.txt
 ```
 
 ## Usage
 
-Basic usage:
+Here's how to use the AvatarMaker:
+
+### Importing the AvatarMaker
 
 ```python
-from py_avataaars import PyAvataaar
+from py_avataaars import AvatarMaker as am
+```
+### Creating a Single Random Avatar and "Safe" Random Avatar
+This returns a tuple containing the SVG string of the avatar and an AvatarInfo object with the avatar's attributes.\n
+Safe avatar are better suited for proffesionel use.
 
-avatar = PyAvataaar()
-avatar.render_png_file('<output_file.png>')
+```python
+avatar_svg, avatar_info = am.create_random_avatar()
+avatar_svg, avatar_info = am.create_random_avatar_safe()
+
+```
+### Creating Multiple Random Avatars
+This returns a list of 25 tuples, each containing an SVG string and an AvatarInfo object.
+
+```python
+avatars = am.create_n_random_avatar_safe(25)
 ```
 
-Specify each part of avatar:
+### Avatar info
+
 ```python
+for avatar_svg, avatar_info in avatars:
+    print(avatar_info.json())
+    print(avatar_info.info_str())  # Detailed info
+    print(avatar_info.info_str_short())  # Short info
+
+all_enum_values = am.get_all_enum_values()
+print(all_enum_values)
+```
+
+This saves each avatar as an SVG file.
+
+```python
+for i, (avatar_svg, avatar_info) in enumerate(avatars):
+    with open(f'{i}-{avatar_info.info_str_short()}', 'w') as f:
+            f.write(avatar_svg)
+```
+
+
+## Customization
+
+You can create a custom avatar by specifying values for each attribute:
+
+```python
+from py_avataaars import AvatarMaker as am
+from py_avataaars import AvatarInfo
 import py_avataaars as pa
-avatar = pa.PyAvataaar(
+
+custom_avatar_info = AvatarInfo(
     style=pa.AvatarStyle.CIRCLE,
-    skin_color=pa.SkinColor.LIGHT,
-    hair_color=pa.HairColor.BROWN,
-    facial_hair_type=pa.FacialHairType.DEFAULT,
-    facial_hair_color=pa.HairColor.BLACK,
     top_type=pa.TopType.SHORT_HAIR_SHORT_FLAT,
-    hat_color=pa.Color.BLACK,
-    mouth_type=pa.MouthType.SMILE,
+    hair_color=pa.HairColor.BROWN,
     eye_type=pa.EyesType.DEFAULT,
     eyebrow_type=pa.EyebrowType.DEFAULT,
-    nose_type=pa.NoseType.DEFAULT,
-    accessories_type=pa.AccessoriesType.DEFAULT,
-    clothe_type=pa.ClotheType.GRAPHIC_SHIRT,
-    clothe_color=pa.Color.HEATHER,
-    clothe_graphic_type=pa.ClotheGraphicType.BAT,
+    mouth_type=pa.MouthType.SMILE,
+    skin_color=pa.SkinColor.LIGHT,
+    # ... other attributes ...
 )
-avatar.render_png_file('<output_file.png>')
-```
 
-[build-status-image]: https://secure.travis-ci.org/kebu/py-avataaars.svg?branch=master
-[travis]: https://travis-ci.org/kebu/py-avataaars?branch=master
-[pypi-version]: https://img.shields.io/pypi/v/py-avataaars.svg
-[pypi]: https://pypi.org/project/py-avataaars/
+custom_avatar_svg = am.create_avatar_from_info(custom_avatar_info)
+```
