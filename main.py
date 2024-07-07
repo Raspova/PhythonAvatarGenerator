@@ -7,8 +7,8 @@ if __name__ == '__main__':
     for i, (avatar_svg, avatar_info) in enumerate(avatars):
         str_av = avatar_info.json()
         print(str_av)
-        #with open(f'{i}-{avatar_info.info_str_short()}', 'w') as f:
-        #        f.write(avatar_svg)
+        with open(f'{i}-{avatar_info.info_str_short()}.svg', 'w') as f:
+                f.write(avatar_svg)
     print(am.get_all_enum_values())
     custom_avatar_info = AvatarInfo(
     top_type=pa.TopType.LONG_HAIR_DREADS,

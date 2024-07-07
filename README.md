@@ -67,15 +67,47 @@ from py_avataaars import AvatarInfo
 import py_avataaars as pa
 
 custom_avatar_info = AvatarInfo(
-    style=pa.AvatarStyle.CIRCLE,
-    top_type=pa.TopType.SHORT_HAIR_SHORT_FLAT,
-    hair_color=pa.HairColor.BROWN,
-    eye_type=pa.EyesType.DEFAULT,
+    top_type=pa.TopType.LONG_HAIR_DREADS,
+    hair_color=pa.HairColor.BROWN_DARK,
+    eye_type=pa.EyesType.WINK,
     eyebrow_type=pa.EyebrowType.DEFAULT,
     mouth_type=pa.MouthType.SMILE,
-    skin_color=pa.SkinColor.LIGHT,
-    # ... other attributes ...
 )
 
 custom_avatar_svg = am.create_avatar_from_info(custom_avatar_info)
 ```
+![SVG Image](custom_avatar.svg)
+
+## Examples SAFE Avatar
+Here's some example of "safe" avatars : 
+
+![SVG Image](/example/0.svg)
+![SVG Image](example/1.svg)
+![SVG Image](example/2.svg)
+![SVG Image](example/3.svg)
+![SVG Image](example/4.svg)
+![SVG Image](example/5.svg)
+![SVG Image](example/6.svg)
+![SVG Image](example/7.svg)
+![SVG Image](example/8.svg)
+![SVG Image](example/9.svg)
+![SVG Image](example/10.svg)
+![SVG Image](example/11.svg)
+
+
+## Examples Avatar
+Here's some example of "unsafe" avatars , true randomnesse:
+
+
+![SVG Image](example/12.svg)
+![SVG Image](example/13.svg)
+![SVG Image](example/14.svg)
+![SVG Image](example/15.svg)
+![SVG Image](example/16.svg)
+![SVG Image](example/17.svg)
+![SVG Image](example/18.svg)
+![SVG Image](example/19.svg)
+![SVG Image](example/20.svg)
+![SVG Image](example/21.svg)
+![SVG Image](example/22.svg)
+![SVG Image](example/23.svg)
