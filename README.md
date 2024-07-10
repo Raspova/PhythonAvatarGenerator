@@ -43,6 +43,7 @@ for avatar_svg, avatar_info in avatars:
     print(avatar_info.json())
     print(avatar_info.info_str())  # Detailed info
     print(avatar_info.info_str_short())  # Short info
+    print(avatar_info.make_id()) # can use this id to remake avatar , ligther to save in db
 
 all_enum_values = am.get_all_enum_values()
 print(all_enum_values)

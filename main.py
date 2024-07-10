@@ -1,12 +1,13 @@
-from py_avataaars import AvatarMaker as am , AvatarInfo 
-import py_avataaars as  pa 
+from PhythonAvatarGenerator import AvatarMaker as am , AvatarInfo 
+import PhythonAvatarGenerator as  pa 
 
 
 if __name__ == '__main__':       
     avatars = am.create_n_random_avatar_safe(25)
     for i, (avatar_svg, avatar_info) in enumerate(avatars):
-        str_av = avatar_info.json()
-        print(str_av)
+        id = avatar_info.make_id()
+        str_av = avatar_info.info_str_short()
+        print(str_av , "->" , id)
         with open(f'{i}-{avatar_info.info_str_short()}.svg', 'w') as f:
                 f.write(avatar_svg)
     print(am.get_all_enum_values())
@@ -21,3 +22,8 @@ if __name__ == '__main__':
     custom_avatar_svg = am.create_avatar_from_info(custom_avatar_info)
     with open('custom_avatar.svg', 'w') as f:
         f.write(custom_avatar_svg)
+    _id = custom_avatar_info.make_id()   
+    print(custom_avatar_info.info_str_short() , "->" , _id)
+    copy_avatar =  am.create_avatar_from_info_id(_id)
+    with open('copy_avatar.svg', 'w') as f:
+        f.write(copy_avatar)
