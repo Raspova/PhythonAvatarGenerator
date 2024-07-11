@@ -16,8 +16,7 @@ if __name__ == '__main__':
     hair_color=pa.HairColor.BROWN_DARK,
     eye_type=pa.EyesType.WINK,
     eyebrow_type=pa.EyebrowType.DEFAULT,
-    mouth_type=pa.MouthType.SMILE,
-    )
+    mouth_type=pa.MouthType.SMILE)
     custom_avatar_info.facial_hair_type = pa.FacialHairType.BEARD_MAJESTIC
     custom_avatar_svg = am.create_avatar_from_info(custom_avatar_info)
     with open('custom_avatar.svg', 'w') as f:
