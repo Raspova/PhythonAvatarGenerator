@@ -26,3 +26,5 @@ if __name__ == '__main__':
     copy_avatar =  am.create_avatar_from_info_id(_id)
     with open('copy_avatar.svg', 'w') as f:
         f.write(copy_avatar)
+    # to clean :  rm *-*.svg  
+    

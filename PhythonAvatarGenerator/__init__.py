@@ -689,7 +689,7 @@ class AvatarMaker:
         return [AvatarMaker.create_random_avatar(output_type) for _ in range(n)]
     
     @staticmethod
-    def get_all_enum_values():
+    def get_all_enum_values() -> dict:
         def enum_to_dict(enum_class):
             return {item.name: item.value for item in enum_class}
         return {
